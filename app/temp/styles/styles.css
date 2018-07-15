@@ -371,6 +371,9 @@ template {
 
 .large-hero__description{
         color: #fff;
+        display: inline-block;
+        margin: auto;
+        width: 360px;
         font-size: 2rem;
         font-weight: 100;
         text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
@@ -381,7 +384,18 @@ template {
     color: #fff;
     padding: 1rem 2rem;
     text-decoration: none;
+    display: inline-block;
 }
+
+.btn__orange{
+        background-color: orange;
+        margin-top: 30px;
+    }
+
+.btn__large{
+        font-size: 1.8rem;
+        padding: 1.2 2.2 rem;
+    }
 
 *{
     padding: 0;

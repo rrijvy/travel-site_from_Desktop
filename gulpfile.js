@@ -5,6 +5,7 @@ var gulp = require("gulp"),
   cssvars = require("postcss-simple-vars"),
   nested = require("postcss-nested"),
   cssImport = require("postcss-import");
+  browserSync = require('browser-sync').create();
 
 gulp.task("default", function() {
   console.log("Rijvy");
@@ -22,7 +23,21 @@ gulp.task("styles", function() {
 });
 
 gulp.task("watch", function() {
+  browserSync.init({
+    server: {
+      baseDir: "app"
+    }
+  });
+
+  watch("./app/index.html", function(){
+    browserSync.reload();
+  })
+
   watch("./app/assets/styles/**/*.css", function() {
-    gulp.start("styles");
+    gulp.start("cssInject");
   });
 });
+gulp.task('cssInject', ['styles'], function(){
+  return gulp.src('./app/temp/styles/styles.css')
+  .pipe(browserSync.stream());
+})
